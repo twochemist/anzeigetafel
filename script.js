@@ -1,103 +1,45 @@
-//Selectors
+let homeScore = 0;
+let guestScore = 0;
+let timerInterval = null;
+let time = 10 * 60; // 10 minutes in seconds
 
-let homeScoreEl = document.getElementById("home-score");
-let guestScoreEl = document.getElementById("guest-score");
-
-let homeScoreBtnOne = document.getElementById("home-score-btn-1");
-let homeScoreBtnTwo = document.getElementById("home-score-btn-2");
-let homeScoreBtnThree = document.getElementById("home-score-btn-3");
-let resetHomeScore = document.getElementById("reset-home-score");
-let resetGuestScore = document.getElementById("reset-guest-score");
-
-let guestScoreBtnOne = document.getElementById("guest-score-btn-1");
-let guestScoreBtnTwo = document.getElementById("guest-score-btn-2");
-let guestScoreBtnThree = document.getElementById("guest-score-btn-3");
-
-// === Button Function - Home === \\
-
-// Button - 1 - Home
-
-homeScoreBtnOne.addEventListener("click", function () {
-  homeScoreEl.textContent++;
-});
-
-// Button - 2 - Home
-
-homeScoreBtnTwo.addEventListener("click", function () {
-  homeScoreEl.textContent = Number(homeScoreEl.textContent) + 2;
-});
-
-// Button - 3 - Home
-
-homeScoreBtnThree.addEventListener("click", function () {
-  homeScoreEl.textContent = Number(homeScoreEl.textContent) + 3;
-});
-
-// Reset - Home
-
-resetHomeScore.addEventListener("click", function () {
-  homeScoreEl.textContent = 0;
-});
-
-// === Button Function - Guest === \\
-
-// Button - 1 - Guest
-
-guestScoreBtnOne.addEventListener("click", function () {
-  guestScoreEl.textContent++;
-});
-
-// Button - 2 - Guest
-
-guestScoreBtnTwo.addEventListener("click", function () {
-  guestScoreEl.textContent = Number(guestScoreEl.textContent) + 2;
-});
-
-// Button - 3 - Guest
-
-guestScoreBtnThree.addEventListener("click", function () {
-  guestScoreEl.textContent = Number(guestScoreEl.textContent) + 3;
-});
-
-// Reset - Guest
-
-resetGuestScore.addEventListener("click", function () {
-  guestScoreEl.textContent = 0;
-});
-
-
-
-// Function for countdown timer
-let countdownTimerElementDisplay = document.getElementById('timer_count');
-
-const startingMinutes = 10;
-let time = startingMinutes * 60;
-
-let isPaused = true;
-
-var timer = setInterval(() => {
-    if(!isPaused) {
-        const minute = Math.floor(time / 60);
-        let seconds = time % 60;
-
-        seconds = seconds < 10 ? '0' + seconds : seconds;
-
-        countdownTimerElementDisplay.textContent = `${minute}:${seconds}`;
-        time--;
+function score(team, points) {
+    if (team === 'home') {
+        homeScore += points;
+        document.getElementById('home-points').textContent = homeScore;
+    } else {
+        guestScore += points;
+        document.getElementById('guest-points').textContent = guestScore;
     }
-}, 1000);
-
-function startTimer(){
-    isPaused = false;
 }
 
-function pauseTimer(){
-    isPaused = true;
+function updateTimerDisplay() {
+    const minutes = Math.floor(time / 60);
+    const seconds = time % 60;
+    document.getElementById('timer-display').textContent = `${minutes.toString().padStart(2, '0')}:${seconds.toString().padStart(2, '0')}`;
+}
+
+function startTimer() {
+    if (timerInterval !== null) return; // Timer is already running
+    timerInterval = setInterval(() => {
+        time--;
+        updateTimerDisplay();
+        if (time === 0) stopTimer();
+    }, 1000);
+}
+
+function stopTimer() {
+    clearInterval(timerInterval);
+    timerInterval = null;
 }
 
 function resetTimer() {
-    countdownTimerElementDisplay.textContent = '10:00';
-    time = startingMinutes * 60;
-    isPaused = true;
+    stopTimer();
+    time = 10 * 60; // Reset to 10 minutes
+    updateTimerDisplay();
 }
+
+// Initialize the timer display initially
+updateTimerDisplay();
+
 
