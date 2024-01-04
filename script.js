@@ -1,45 +1,80 @@
-let homeScore = 0;
-let guestScore = 0;
-let timerInterval = null;
-let time = 10 * 60; // 10 minutes in seconds
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
 
-function score(team, points) {
-    if (team === 'home') {
-        homeScore += points;
-        document.getElementById('home-points').textContent = homeScore;
-    } else {
-        guestScore += points;
-        document.getElementById('guest-points').textContent = guestScore;
+body {
+    background-color: #ee6730; /* Orange color like LTV Basketball theme */
+    color: white;
+    font-family: 'DESPORM', sans-serif;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    text-align: center;
+}
+
+.scoreboard {
+    background-color: #000;
+    border: 3px solid #fff;
+    padding: 20px;
+    width: 90%;
+    max-width: 700px;
+    border-radius: 10px;
+}
+
+.team {
+    margin: 20px 0;
+}
+
+.team-name {
+    font-size: 3.5em;
+    margin-bottom: 0.5em;
+}
+
+.points {
+    font-size: 6em;
+    margin-bottom: 0.5em;
+}
+
+.buttons button, .timer-buttons button {
+    background: #555;
+    border: none;
+    color: #fff;
+    margin: 0 5px;
+    padding: 10px 20px;
+    font-size: 1em;
+    cursor: pointer;
+    border-radius: 5px;
+    transition: background-color 0.3s;
+}
+
+.buttons button:hover, .timer-buttons button:hover {
+    background-color: #fdba21; /* Gold color like NBA theme */
+}
+
+.timer {
+    margin: 10px 0;
+}
+
+.time {
+    font-size: 0.5em;
+    margin-bottom: 1em;
+}
+
+@media (max-width: 768px) {
+    .buttons button, .timer-buttons button {
+        padding: 4px 10px;
+        font-size: 0.75em;
+    }
+
+    .points {
+        font-size: 4.5em;
+    }
+
+    .team-name, .time {
+        font-size: 1.8em;
     }
 }
-
-function updateTimerDisplay() {
-    const minutes = Math.floor(time / 60);
-    const seconds = time % 60;
-    document.getElementById('timer-display').textContent = `${minutes.toString().padStart(2, '0')}:${seconds.toString().padStart(2, '0')}`;
-}
-
-function startTimer() {
-    if (timerInterval !== null) return; // Timer is already running
-    timerInterval = setInterval(() => {
-        time--;
-        updateTimerDisplay();
-        if (time === 0) stopTimer();
-    }, 1000);
-}
-
-function stopTimer() {
-    clearInterval(timerInterval);
-    timerInterval = null;
-}
-
-function resetTimer() {
-    stopTimer();
-    time = 10 * 60; // Reset to 10 minutes
-    updateTimerDisplay();
-}
-
-// Initialize the timer display initially
-updateTimerDisplay();
-
 
