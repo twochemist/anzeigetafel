@@ -1,82 +1,48 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
-	<meta charset="utf-8">
-	<meta name="viewport" content="width=device-width, initial-scale=1">
-	<title>LTV Basket Anzeigetafel</title>
-
-	<!-- Style Sheet Link -->
-	<link rel="stylesheet" type="text/css" href="style.css">
-
-	<!-- Favicon -->
-	<link rel="icon" type="image/x-icon" href="Images/Favicon.png">
-
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>LTV Basket Anzeigetafel</title>
+    <link rel="stylesheet" href="style.css">
+<link href="https://fonts.cdnfonts.com/css/desporm" rel="stylesheet">
+                <style>
+                            @import url('https://fonts.cdnfonts.com/css/desporm');
+</style>
+                      
+                
 </head>
 <body>
-    
+    <div class="scoreboard">
+        <div class="team" id="home">
+            <h2 class="team-name">LOCAL</h2>
+            <div class="points" id="home-points">0</div>
+            <div class="buttons">
+                <button onclick="score('home', 1)">+1</button>
+                <button onclick="score('home', 2)">+2</button>
+                <button onclick="score('home', 3)">+3</button>
+            </div>
+        </div>
 
-	<!-- Container Start -->
-	<main class="container">
-        
+        <div class="timer">
+            <div class="time" id="timer-display">10:00</div>
+            <div class="timer-buttons">
+                <button onclick="startTimer()">Start</button>
+                <button onclick="stopTimer()">Pause</button>
+                <button onclick="resetTimer()">Reset</button>
+            </div>
+        </div>
 
-		<!-- Home Start -->
-		<div class="home">
-			<h3>HOME</h3>
-			<div class="scoreboard-home">
-				<h2 id="home-score">0</h2>
-			</div>
-
-			<!-- Buttons -->
-			<div class="buttons">
-				<button class="plusone-btn" id="home-score-btn-1">+1</button>
-				<button class="plustwo-btn" id="home-score-btn-2">+2</button>
-				<button class="plusthree-btn" id="home-score-btn-3">+3</button>
-				<button class="reset-btn" id="reset-home-score">Reset</button>
-			</div>
-		</div>
-
-        
-
-        
-		<!-- Home End -->
-
-		<!-- Guest Start -->
-		<div class="guest">
-			<h3>GUEST</h3>
-			<div class="scoreboard-guest">
-				<h2 id="guest-score">0</h2>
-			</div>
-
-			<!-- Buttons -->
-			<div class="buttons">
-				<button class="plusone-btn" id="guest-score-btn-1">+1</button>
-				<button class="plustwo-btn" id="guest-score-btn-2">+2</button>
-				<button class="plusthree-btn" id="guest-score-btn-3">+3</button>
-				<button class="reset-btn" id="reset-guest-score">Reset</button>
-			</div>
-		</div>
-
-		<!-- Guest End -->
-                            <!-- mid row -->
-
-                <div class="home">
-                    <h3>Timer</h3>
-                    <p class="counts" id="timer_count">10:00</p>
-                    <div class="buttons">
-                        <button class="btn" id="start_timer" onclick="startTimer()">Start</button>
-                        <button class="btn" id="pause_timer" onclick="pauseTimer()">Pause</button>
-                        <button class="btn" id="reset_timer" onclick="resetTimer()">Reset</button>
-                        <!-- <button class="btn">Resume</button> -->
-                    </div>
-                </div>
-  
-            <!-- mid row -->
-
-	</main>
-	<!-- Container End -->
-
-	<!-- JavaScript -->
-	<script type="text/javascript" src="script.js"></script>
-
+        <div class="team" id="guest">
+            <h2 class="team-name">GUEST</h2>
+            <div class="points" id="guest-points">0</div>
+            <div class="buttons">
+                <button onclick="score('guest', 1)">+1</button>
+                <button onclick="score('guest', 2)">+2</button>
+                <button onclick="score('guest', 3)">+3</button>
+            </div>
+        </div>
+    </div>
+    <script src="script.js"></script>
 </body>
 </html>
