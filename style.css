@@ -1,146 +1,79 @@
-/* === CSS Variables === */
-
-:root {
-  --background: rgba(238, 103, 48, 1.00);
-  --primary: rgba(238, 238, 238, 1);
-  --heading: rgba(8, 0, 1, 1);
-  --text: rgba(238, 238, 238, 1);
-  --scoreboard: rgba(8, 0, 1, 1);
-}
-
-html {
-  box-sizing: border-box;
-}
-
-*,
-*::before,
-*::after {
-  box-sizing: inherit;
-}
-
 * {
-  margin: 0;
-  padding: 0;
-}
-
-/* === Fonts === */
-
-@font-face {
-  font-family: "Cursed Timer ULiL", sans-serif;
-  src: url(Fonts/CursedTimer.ttf);
-  font-weight: 400;
-  font-style: normal;
-}
-
-@font-face {
-  font-family: "Verdana", sans-serif;
-  src: url(Fonts/Verdana.ttf);
-  font-weight: 700;
-  font-style: normal;
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
 }
 
 body {
-  background-color: var(--background);
-  min-height: 100vh;
-  display: flex;
-  justify-content: center;
-  align-items: center;
+    background-color: #ee6730; /* Orange color like LTV Basketball theme */
+    color: white;
+    font-family: 'DESPORM', sans-serif;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    text-align: center;
 }
 
-/* === Heading === */
-
-.heading {
-  font-family: "Verdana", sans-serif;
-  color: var(--heading);
-  text-transform: uppercase;
-  letter-spacing: 2px;
+.scoreboard {
+    background-color: #000;
+    border: 3px solid #fff;
+    padding: 20px;
+    width: 90%;
+    max-width: 700px;
+    border-radius: 10px;
 }
 
-/* === Container === */
-
-.container {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 0.5em;
-  color: var(--heading);
-  text-align: center;
+.team {
+    margin: 20px 0;
 }
 
-/* === Home & Guest Section ==== */
-
-.home,
-.guest {
-  width: 18em;
-  padding: 1em;
-  /*border: 1px solid white;*/
+.team-name {
+    font-size: 3.5em;
+    margin-bottom: 0.5em;
 }
 
-h3 {
-  font-family: "Verdana", sans-serif;
-  font-size: 2.5rem;
+.points {
+    font-size: 6em;
+    margin-bottom: 0.5em;
 }
 
-/* === Home & Guest Counters === */
-
-.scoreboard-home,
-.scoreboard-guest {
-  width: 8.75em;
-  background-color: var(--scoreboard);
-  margin: 1.25em auto;
-  border-radius: 5px;
+.buttons button, .timer-buttons button {
+    background: #555;
+    border: none;
+    color: #fff;
+    margin: 0 5px;
+    padding: 10px 20px;
+    font-size: 1em;
+    cursor: pointer;
+    border-radius: 5px;
+    transition: background-color 0.3s;
 }
 
-h2 {
-  font-family: "Cursed Timer ULiL", sans-serif;
-  font-size: 5.625rem;
-  text-align: center;
-  color: var(--text);
-  padding-top: 0.18em;
+.buttons button:hover, .timer-buttons button:hover {
+    background-color: #fdba21; /* Gold color like NBA theme */
 }
 
-/* === Buttons === */
-
-.buttons {
-  display: flex;
-  gap: 0.4em;
-  justify-content: center;
-  align-items: center;
-  flex-wrap: wrap;
+.timer {
+    margin: 10px 0;
 }
 
-.plusone-btn,
-.plustwo-btn,
-.plusthree-btn,
-.reset-btn {
-  border: 0;
-  padding: 0.5625em;
-  cursor: pointer;
-  background-color: transparent;
-  color: var(--primary);
-  border: 2px solid var(--primary);
-  border-radius: 5px;
-  font-size: 0.9rem;
-  font-family: "Cursed Timer ULiL", sans-serif;
+.time {
+    font-size: 0.5em;
+    margin-bottom: 1em;
 }
 
-.reset-btn{
-  letter-spacing: 0.125em;
-}
+@media (max-width: 768px) {
+    .buttons button, .timer-buttons button {
+        padding: 4px 10px;
+        font-size: 0.75em;
+    }
 
-.buttons > button:active {
-  transform: scale(0.96);
-}
+    .points {
+        font-size: 4.5em;
+    }
 
-.counters {
-    margin: 100px 20px;
-}
-
-/* === Media Queries === */
-
-@media (max-width: 667px) {
-
-  .container {
-    margin: 5em;
-  }
-
+    .team-name, .time {
+        font-size: 1.8em;
+    }
 }
