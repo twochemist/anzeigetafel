@@ -1,7 +1,7 @@
 let homeScore = 0;
 let guestScore = 0;
 let timerInterval = null;
-let time = 10 * 60; // 10 minutes in seconds
+let time = 10 * 60; 
 
 function score(team, points) {
     if (team === 'home') {
@@ -20,7 +20,7 @@ function updateTimerDisplay() {
 }
 
 function startTimer() {
-    if (timerInterval !== null) return; // Timer is already running
+    if (timerInterval !== null) return; 
     timerInterval = setInterval(() => {
         time--;
         updateTimerDisplay();
@@ -35,10 +35,9 @@ function stopTimer() {
 
 function resetTimer() {
     stopTimer();
-    time = 10 * 60; // Reset to 10 minutes
+    time = 10 * 60;
     updateTimerDisplay();
 }
 
-// Initialize the timer display initially
 updateTimerDisplay();
 
