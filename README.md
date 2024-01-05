@@ -13,7 +13,7 @@
 
 ## How to use it
 
-- Clone repository ``` $ git clone https://github.com/your-username/basketball-scoreboard.git ```
+- Clone repository ``` $ git clone https://github.com/your-username/basketball-scoreboard](https://github.com/twochemist/anzeigetafel).git ```
 - Navigate to the application directory ``` $ cd basketball-scoreboard ```
 - To add points: Click on the +1, +2, or +3 buttons under the "Local" or "Guest" sections to add points to the respective teams. 
 - To control the timer: Use the "Start", "Pause", and "Reset" buttons to start, stop, and reset the game timer.
